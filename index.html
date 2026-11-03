@@ -316,7 +316,19 @@ async function generate() {
       message.insertAdjacentElement("afterend", result);
     }
 
-    result.src = URL.createObjectURL(blob);
+    result.src = URL.createObjectURL(blob);const downloadLink = document.createElement("a");
+downloadLink.href = result.src;
+downloadLink.download = "ALNAHARI-AI-image.png";
+downloadLink.innerText = "⬇ Download Image";
+downloadLink.style.display = "block";
+downloadLink.style.padding = "12px";
+downloadLink.style.margin = "10px";
+downloadLink.style.background = "#2563eb";
+downloadLink.style.color = "white";
+downloadLink.style.textAlign = "center";
+downloadLink.style.borderRadius = "8px";
+downloadLink.style.textDecoration = "none";
+result.insertAdjacentElement("afterend", downloadLink);
     message.innerText = "Your image has been created successfully!";
 
   } catch (error) {
