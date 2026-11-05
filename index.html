@@ -3,343 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALNAHARI AI - Creative Studio</title>
-
+<meta name="theme-color" content="#090909">
+<meta name="description" content="ALNAHARI AI Creative Studio — create AI images and cinematic videos.">
+<title>ALNAHARI AI — Creative Studio</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #090909;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  padding: 22px;
-  border-bottom: 1px solid #292929;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  color: #d9ad55;
-  font-size: 23px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.logo span {
-  color: white;
-}
-
-header button {
-  background: transparent;
-  color: #d9ad55;
-  border: 1px solid #d9ad55;
-  padding: 9px 15px;
-  border-radius: 8px;
-}
-
-.hero {
-  text-align: center;
-  padding: 65px 15px 35px;
-}
-
-.hero h1 {
-  font-size: 36px;
-  color: #e3bb6b;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  color: #aaa;
-  line-height: 1.7;
-}
-
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 20px;
-}
-
-.tools {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-.card {
-  background: #171717;
-  border: 1px solid #333;
-  border-radius: 13px;
-  padding: 23px 12px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.card:hover {
-  border-color: #d9ad55;
-}
-
-.icon {
-  font-size: 30px;
-  margin-bottom: 12px;
-}
-
-.card h3 {
-  color: #e3bb6b;
-  font-size: 15px;
-}
-
-.generator {
-  margin-top: 35px;
-  background: #171717;
-  border: 1px solid #333;
-  padding: 22px;
-  border-radius: 15px;
-}
-
-.generator h2 {
-  color: #e3bb6b;
-  margin-bottom: 18px;
-}
-
-textarea {
-  width: 100%;
-  height: 120px;
-  background: #090909;
-  color: white;
-  border: 1px solid #444;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 15px;
-  resize: vertical;
-}
-
-select, input[type="file"] {
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  background: #090909;
-  color: white;
-  border: 1px solid #444;
-  border-radius: 8px;
-}
-
-.generate {
-  width: 100%;
-  margin-top: 18px;
-  padding: 16px;
-  background: linear-gradient(90deg,#b78a36,#f0ce80);
-  color: #111;
-  border: none;
-  border-radius: 9px;
-  font-size: 17px;
-  font-weight: bold;
-}
-
-#preview {
-  max-width: 100%;
-  margin-top: 15px;
-  border-radius: 10px;
-  display: none;
-}
-
-footer {
-  text-align: center;
-  padding: 35px 10px;
-  color: #777;
-  font-size: 13px;
-}
-
-@media(max-width:450px) {
-  .hero h1 {font-size: 29px;}
-}
+:root{--bg:#090909;--panel:#151515;--panel2:#1d1b17;--gold:#dfb65f;--gold2:#f3d58f;--muted:#aaa;--line:#34312a;--danger:#ff8b8b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211b10 0,#090909 48%);color:#f7f4ed;font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+header{height:72px;padding:0 max(18px,calc((100% - 1050px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #30291c;background:#090909d9;position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+.logo{font-weight:800;letter-spacing:1.6px;font-size:21px;color:var(--gold)}.logo span{color:white}.badge{font-size:11px;color:#d8c69e;border:1px solid #65512b;border-radius:30px;padding:7px 11px}
+.hero{text-align:center;padding:48px 16px 24px}.hero h1{font-size:clamp(29px,6vw,43px);margin:0 0 12px;color:var(--gold2)}.hero p{color:var(--muted);line-height:1.65;margin:0}
+.wrap{max-width:920px;margin:0 auto;padding:18px 16px 50px}
+.section-label{font-size:12px;letter-spacing:1.5px;color:#9f9276;text-transform:uppercase;margin:10px 0 13px}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mode{background:linear-gradient(145deg,#1b1b1b,#111);border:1px solid var(--line);border-radius:14px;padding:17px 10px;min-height:112px;color:white;text-align:center;cursor:pointer;transition:.2s}
+.mode:hover,.mode.active{border-color:var(--gold);background:linear-gradient(145deg,#292216,#15120d);box-shadow:0 0 0 1px #dfb65f22}
+.mode .icon{font-size:27px;display:block;margin-bottom:9px}.mode strong{display:block;color:var(--gold2);font-size:14px}.mode small{display:block;color:#999;margin-top:5px;font-size:11px}
+.panel{margin-top:19px;padding:clamp(17px,4vw,25px);background:#141414;border:1px solid var(--line);border-radius:17px;box-shadow:0 18px 55px #0007}
+.panel h2{font-size:20px;color:var(--gold2);margin:0 0 8px}.sub{color:#999;font-size:13px;line-height:1.5;margin:0 0 18px}
+label{display:block;color:#d8cba9;font-size:13px;margin:16px 0 8px}
+textarea,select,input[type=file]{width:100%;border:1px solid #45413a;background:#090909;color:white;border-radius:10px;padding:13px;font:inherit}
+textarea{min-height:125px;resize:vertical;line-height:1.5}textarea:focus,select:focus{outline:1px solid var(--gold);border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.filebox{border:1px dashed #6c5934;border-radius:12px;padding:13px;background:#100f0d}
+input[type=file]{padding:9px;font-size:12px}
+#imagePreview{display:none;max-width:100%;max-height:250px;border-radius:10px;margin:12px auto 0}
+.primary{width:100%;border:0;border-radius:11px;padding:16px;margin-top:20px;background:linear-gradient(90deg,#b88a35,#f4d58d);color:#15110a;font-weight:800;font-size:16px;cursor:pointer}
+.primary:disabled{opacity:.55;cursor:wait}
+#status{min-height:22px;text-align:center;color:var(--gold2);font-size:13px;line-height:1.5;margin:15px 0 0;white-space:pre-wrap}
+#error{color:var(--danger)}
+.result{display:none;margin-top:20px;border-top:1px solid #373127;padding-top:18px}.result h3{color:var(--gold2);font-size:16px}.result img,.result video{display:block;width:100%;max-height:520px;object-fit:contain;background:#050505;border-radius:12px}
+.download{display:block;text-align:center;text-decoration:none;background:#29251d;border:1px solid #806a3d;color:#f5d994;padding:12px;border-radius:9px;margin-top:12px;font-weight:bold}
+.note{font-size:11px;line-height:1.55;color:#89847a;margin-top:13px}
+footer{text-align:center;color:#777;font-size:12px;padding:25px 12px 35px;border-top:1px solid #211f1b}
+@media(max-width:560px){.modes{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.hero{padding-top:38px}.mode{min-height:100px}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">ALNAHARI <span>AI</span></div>
-  <button>Creative Studio</button>
-</header>
-
-<section class="hero">
-  <h1>Imagine. Create. Inspire.</h1>
-  <p>Your personal AI studio for creating amazing images<br>
-  and cinematic videos.</p>
-</section>
-
-<div class="container">
-
-  <div class="tools">
-
-    <div class="card" onclick="choose('video')">
-      <div class="icon">🎬</div>
-      <h3>Text to Video</h3>
-    </div>
-
-    <div class="card" onclick="choose('imagevideo')">
-      <div class="icon">🎞️</div>
-      <h3>Image to Video</h3>
-    </div>
-
-    <div class="card" onclick="choose('image')">
-      <div class="icon">🎨</div>
-      <h3>AI Image Generator</h3>
-    </div>
-
-    <div class="card" onclick="choose('edit')">
-      <div class="icon">✨</div>
-      <h3>AI Image Editor</h3>
-    </div>
-
+<header><div class="logo">ALNAHARI <span>AI</span></div><div class="badge">CREATIVE STUDIO</div></header>
+<section class="hero"><h1>Imagine. Create. Inspire.</h1><p>Your AI studio for images and cinematic videos.<br>Turn your ideas into visual creations.</p></section>
+<main class="wrap">
+  <div class="section-label">Choose your creative tool</div>
+  <div class="modes">
+    <button class="mode active" type="button" data-mode="video"><span class="icon">🎬</span><strong>Text to Video</strong><small>Create video from a prompt</small></button>
+    <button class="mode" type="button" data-mode="imagevideo"><span class="icon">🎞️</span><strong>Image to Video</strong><small>Animate your own image</small></button>
+    <button class="mode" type="button" data-mode="image"><span class="icon">🎨</span><strong>AI Image Generator</strong><small>Create an image from text</small></button>
+    <button class="mode" type="button" data-mode="edit"><span class="icon">✨</span><strong>AI Image Editor</strong><small>Coming soon</small></button>
   </div>
 
-  <div class="generator">
+  <section class="panel">
+    <h2 id="toolTitle">Text to Video Generator</h2>
+    <p class="sub" id="toolDescription">Describe the scene, actions, camera movement and sounds you want.</p>
+    <label for="prompt">Your prompt</label>
+    <textarea id="prompt" maxlength="3000" placeholder="Example: A small brown rabbit runs through a green forest, stops beside a stream, then looks toward the camera. Soft birdsong and gentle water sounds."></textarea>
 
-    <h2 id="title">AI Creative Studio</h2>
+    <div id="referenceBox" style="display:none">
+      <label for="referenceImage">Upload your reference image (JPG, PNG or WebP)</label>
+      <div class="filebox"><input id="referenceImage" type="file" accept="image/jpeg,image/png,image/webp"><img id="imagePreview" alt="Reference image preview"></div>
+    </div>
 
-    <textarea id="prompt"
-    placeholder="Describe what you want to create..."></textarea>
+    <div class="row">
+      <div>
+        <label for="duration">Video duration</label>
+        <select id="duration"><option value="4">4 seconds</option><option value="6">6 seconds</option><option value="8">8 seconds</option></select>
+      </div>
+      <div>
+        <label for="quality">Image quality</label>
+        <select id="quality"><option value="standard">Standard</option><option value="high">High</option><option value="ultra">Ultra</option></select>
+      </div>
+    </div>
 
-    <input type="file" id="upload"
-    accept="image/*" onchange="showPreview(event)">
-
-    <img id="preview">
-
-    <select id="quality">
-      <option>Standard Quality</option>
-      <option>High Quality</option>
-      <option>Ultra Quality</option>
-    </select>
-
-    <button class="generate" onclick="generate()">
-      ✨ Generate with ALNAHARI AI
-    </button>
-
-    <p id="message" style="color:#d9ad55;margin-top:15px;text-align:center;"></p>
-
-  </div>
-
-</div>
-
-<footer>
-  ALNAHARI AI © 2026<br><br>
-  Powered by Imagination
-</footer>
-
+    <button class="primary" id="generateButton" type="button">✨ Generate with ALNAHARI AI</button>
+    <p id="status" role="status" aria-live="polite"></p>
+    <div class="result" id="resultBox"><h3>Your creation</h3><div id="resultMedia"></div><a class="download" id="downloadLink" href="#" download>⬇ Download your creation</a></div>
+    <p class="note">Video generation may use your Pollinations account balance. Processing time and audio availability depend on the selected AI model. The system requests synchronized dialogue and sound effects, but native audio is not guaranteed for every generation. Please use images, voices and prompts that you have the rights to use.</p>
+  </section>
+</main>
+<footer>ALNAHARI AI © 2026<br><br>Powered by Imagination</footer>
 <script>
-
-let mode = "video";
-
-function choose(type) {
-  mode = type;
-
-  let titles = {
-    video: "Text to Video Generator",
-    imagevideo: "Image to Video Generator",
-    image: "AI Image Generator",
-    edit: "AI Image Editor"
+(() => {
+  let mode = "video";
+  let resultObjectUrl = null;
+  const $ = id => document.getElementById(id);
+  const titles = {
+    video: ["Text to Video Generator","Describe the scene and the sequence of events. Include the sounds or dialogue you want."],
+    imagevideo: ["Image to Video Generator","Upload a reference image, then describe how it should move. Keep the prompt focused on the motion."],
+    image: ["AI Image Generator","Describe the image you want to create in as much detail as you like."],
+    edit: ["AI Image Editor","This tool is being prepared and is not available yet."]
   };
 
-  document.getElementById("title").innerText = titles[type];
-
-  document.getElementById("message").innerText =
-  "Selected: " + titles[type];
-}
-
-function showPreview(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const preview = document.getElementById("preview");
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
-}
-
-async function generate() {
-  const prompt = document.getElementById("prompt").value.trim();
-  const message = document.getElementById("message");
-  const button = document.querySelector(".generate");
-
-  if (!prompt) {
-    message.innerText = "Please enter your description first.";
-    return;
-  }
-
-  if (mode !== "image") {
-    message.innerText = "Please select AI Image Generator first.";
-    return;
-  }
-
-  button.disabled = true;
-  message.innerText = "Creating your image... Please wait.";
-
-  try {
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ prompt })
+  document.querySelectorAll(".mode").forEach(button => {
+    button.addEventListener("click", () => {
+      mode = button.dataset.mode;
+      document.querySelectorAll(".mode").forEach(b => b.classList.toggle("active", b === button));
+      $("toolTitle").textContent = titles[mode][0];
+      $("toolDescription").textContent = titles[mode][1];
+      $("referenceBox").style.display = mode === "imagevideo" ? "block" : "none";
+      $("duration").disabled = mode === "image";
+      $("quality").disabled = mode !== "image";
+      $("generateButton").disabled = mode === "edit";
+      $("generateButton").textContent = mode === "edit" ? "Coming soon" : "✨ Generate with ALNAHARI AI";
+      $("status").textContent = mode === "edit" ? "AI Image Editor is not connected yet. Your existing image and video tools remain available." : "";
+      $("resultBox").style.display = "none";
     });
+  });
 
-    if (!response.ok) {
-      let errorMessage = "Image generation failed.";
-      try {
-        const errorData = await response.json();
-        errorMessage = errorData.details || errorData.error || errorMessage;
-      } catch (e) {}
-      throw new Error(errorMessage);
+  $("referenceImage").addEventListener("change", () => {
+    const file = $("referenceImage").files[0];
+    const preview = $("imagePreview");
+    if (!file) { preview.style.display = "none"; return; }
+    if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+      $("referenceImage").value = "";
+      $("status").textContent = "Please choose a JPG, PNG or WebP image.";
+      preview.style.display = "none";
+      return;
     }
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+    $("status").textContent = "";
+  });
 
-    const blob = await response.blob();
-
-    if (!blob.type.startsWith("image/")) {
-      throw new Error("The server did not return an image.");
-    }
-
-    let result = document.getElementById("result");
-
-    if (!result) {
-      result = document.createElement("img");
-      result.id = "result";
-      result.style.cssText =
-        "display:block;max-width:100%;height:auto;margin:20px auto;border-radius:12px;";
-      message.insertAdjacentElement("afterend", result);
-    }
-
-    result.src = URL.createObjectURL(blob);const downloadLink = document.createElement("a");
-downloadLink.href = result.src;
-downloadLink.download = "ALNAHARI-AI-image.png";
-downloadLink.innerText = "⬇ Download Image";
-downloadLink.style.display = "block";
-downloadLink.style.padding = "12px";
-downloadLink.style.margin = "10px";
-downloadLink.style.background = "#2563eb";
-downloadLink.style.color = "white";
-downloadLink.style.textAlign = "center";
-downloadLink.style.borderRadius = "8px";
-downloadLink.style.textDecoration = "none";
-result.insertAdjacentElement("afterend", downloadLink);
-    message.innerText = "Your image has been created successfully!";
-
-  } catch (error) {
-    message.innerText = "Error: " + error.message;
-
-  } finally {
-    button.disabled = false;
+  function setBusy(busy) {
+    $("generateButton").disabled = busy;
+    if (busy) $("generateButton").textContent = "Working... Please wait";
+    else $("generateButton").textContent = "✨ Generate with ALNAHARI AI";
   }
+
+  async function readError(response) {
+    try {
+      const data = await response.json();
+      return data.details || data.error || ("Request failed (" + response.status + ")");
+    } catch (_) {
+      return "Request failed (" + response.status + "). Please try again.";
+    }
+  }
+
+  function showResult(blob, kind) {
+    if (resultObjectUrl) URL.revokeObjectURL(resultObjectUrl);
+    resultObjectUrl = URL.createObjectURL(blob);
+    const holder = $("resultMedia");
+    holder.innerHTML = "";
+    let element;
+    if (kind === "video") {
+      element = document.createElement("video");
+      element.controls = true;
+      element.playsInline = true;
+      element.preload = "metadata";
+      element.src = resultObjectUrl;
+      $("downloadLink").download = "ALNAHARI-AI-video.mp4";
+    } else {
+      element = document.createElement("img");
+      element.alt = "Generated image";
+      element.src = resultObjectUrl;
+      $("downloadLink").download = "ALNAHARI-AI-image.png";
+    }
+    holder.appendChild(element);
+    $("downloadLink").href = resultObjectUrl;
+    $("resultBox").style.display = "block";
+  }
+
+  async function compressImage(file) {
+    if (file.size > 15 * 1024 * 1024) throw new Error("Choose an image smaller than 15 MB.");
+    const source = await createImageBitmap(file);
+    const maxSide = 1600;
+    const scale = Math.min(1, maxSide / Math.max(source.width, source.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(source.width * scale));
+    canvas.height = Math.max(1, Math.round(source.height * scale));
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
+    source.close();
+    let blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.82));
+    if (!blob) throw new Error("Could not process this image. Try another image.");
+    if (blob.size > 2.8 * 1024 * 1024) {
+      blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.55));
+    }
+    if (!blob || blob.size > 2.8 * 1024 * 1024) throw new Error("Image is still too large after compression. Please choose a smaller image.");
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error("Could not read the selected image."));
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function createVideo(prompt) {
+    const payload = { prompt, mode, duration: Number($("duration").value) };
+    if (mode === "imagevideo") {
+      const file = $("referenceImage").files[0];
+      if (!file) throw new Error("Please upload a reference image first.");
+      $("status").textContent = "Preparing your reference image...";
+      payload.imageData = await compressImage(file);
+    }
+
+    $("status").textContent = "Sending your video request...";
+    const response = await fetch("/api/video", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (response.status === 202) {
+      const job = await response.json();
+      if (!job.jobId) throw new Error("The video service did not return a job ID.");
+      return await waitForVideo(job.jobId);
+    }
+    if (!response.ok) throw new Error(await readError(response));
+    const type = response.headers.get("content-type") || "";
+    if (type.startsWith("video/")) return await response.blob();
+    const data = await response.json();
+    if (data.videoUrl) {
+      const videoResponse = await fetch(data.videoUrl);
+      if (!videoResponse.ok) throw new Error("Could not retrieve the generated video.");
+      return await videoResponse.blob();
+    }
+    throw new Error("The video service returned an unexpected response.");
+  }
+
+  async function waitForVideo(jobId) {
+    const started = Date.now();
+    while (Date.now() - started < 5 * 60 * 1000) {
+      $("status").textContent = "Creating your video... This can take a few minutes.";
+      await new Promise(resolve => setTimeout(resolve, 6000));
+      const response = await fetch("/api/video?jobId=" + encodeURIComponent(jobId), { cache: "no-store" });
+      if (!response.ok) throw new Error(await readError(response));
+      const type = response.headers.get("content-type") || "";
+      if (type.startsWith("video/")) return await response.blob();
+      const data = await response.json();
+      if (data.status === "failed") throw new Error(data.error || "Video generation failed.");
+      if (data.status === "succeeded") {
+        // Some providers may return a JSON result rather than the video bytes.
+        if (data.videoUrl) {
+          const videoResponse = await fetch(data.videoUrl);
+          if (!videoResponse.ok) throw new Error("Could not retrieve the generated video.");
+          return await videoResponse.blob();
+        }
       }
+    }
+    throw new Error("Video generation is taking longer than expected. Please check again later; avoid submitting the same request repeatedly.");
+  }
 
+  $("generateButton").addEventListener("click", async () => {
+    const prompt = $("prompt").value.trim();
+    if (!prompt) { $("status").textContent = "Please enter your description first."; return; }
+    if (mode === "edit") return;
+    setBusy(true);
+    $("resultBox").style.display = "none";
+    $("status").textContent = "";
+    try {
+      if (mode === "image") {
+        $("status").textContent = "Creating your image. Please wait...";
+        const response = await fetch("/api/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+        if (!response.ok) throw new Error(await readError(response));
+        const blob = await response.blob();
+        if (!(blob.type || "").startsWith("image/")) throw new Error("The server did not return a valid image.");
+        showResult(blob, "image");
+        $("status").textContent = "Your image has been created successfully!";
+      } else {
+        const blob = await createVideo(prompt);
+        if (!(blob.type || "").startsWith("video/")) throw new Error("The service did not return a playable video file.");
+        showResult(blob, "video");
+        $("status").textContent = "Your video is ready!";
+      }
+    } catch (error) {
+      $("status").textContent = "Error: " + (error.message || "Something went wrong.");
+      $("status").id = "status";
+    } finally {
+      setBusy(false);
+    }
+  });
+
+  $("quality").addEventListener("change", () => {
+    // The current image API uses its configured model. Quality selector is visual only until model options are connected.
+  });
+})();
 </script>
-
 </body>
-      </html>
+</html>
