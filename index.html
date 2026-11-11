@@ -1,76 +1,370 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#06143e"><meta name="description" content="ALNAHARI AI — أطلق إبداعك بالذكاء الاصطناعي">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="ALNAHARI AI — create AI images and cinematic videos.">
 <title>ALNAHARI AI — Creative Studio</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
-:root{--navy:#06143e;--blue:#087bff;--cyan:#13dfff;--purple:#9b54ff;--gold:#ffc928;--white:#f7fbff}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--white);font-family:Cairo,Tahoma,Arial,sans-serif;background:radial-gradient(ellipse at 50% 38%,#0751a966,transparent 45%),radial-gradient(ellipse at 92% 55%,#751eff44,transparent 34%),linear-gradient(135deg,#020a27,#071d58 50%,#030b2c);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(115deg,transparent 0 90px,#168bff 91px 93px,transparent 94px 180px);mask-image:linear-gradient(#000,transparent 90%)}
-header{height:82px;position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(14px,4vw,55px);background:#020a27eF;border:1px solid #237bdf66;border-radius:0 0 24px 24px;box-shadow:0 8px 35px #006aff22;backdrop-filter:blur(14px)}
-.logo{width:245px;max-width:48vw}.head-actions{display:flex;gap:12px;align-items:center}.badge,.lang{border:1px solid #2b8eff;border-radius:28px;padding:9px 15px;background:#0b2252;color:#eaf7ff;font-weight:700;font-size:12px}.lang{cursor:pointer;color:#fff}
-.hero{max-width:1250px;margin:auto;padding:35px 20px 12px;display:grid;grid-template-columns:minmax(240px,36%) 1fr;align-items:center;gap:20px}
-.robot-wrap{display:flex;justify-content:center;align-items:center;min-height:300px}.robot{width:min(100%,390px);height:310px;object-fit:contain;filter:drop-shadow(0 0 24px #168cff88)}
-.robot-fallback{font-size:150px;filter:drop-shadow(0 0 25px #168cff)}
-.hero-copy{text-align:center}.hero h1{font-size:clamp(34px,5vw,62px);margin:0;color:#fff;letter-spacing:1px;text-shadow:0 0 25px #168cff77}.hero h1 span{color:var(--cyan)}.hero p{font-size:clamp(17px,2vw,23px);margin:5px 0 23px;color:#e5f2ff}
-.modes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.mode{min-height:125px;border:1px solid #328fff;border-radius:19px;background:linear-gradient(145deg,#173d9cdd,#111b57dd);color:#fff;cursor:pointer;padding:14px 8px;box-shadow:0 0 17px #007bff33;transition:.2s}.mode:nth-child(2){border-color:#0de0ff}.mode:nth-child(3){border-color:#a25cff}.mode:nth-child(4){border-color:#26a9ff}.mode.active,.mode:hover{transform:translateY(-3px);box-shadow:0 0 24px #008bff88;background:linear-gradient(145deg,#2058c9,#15205f)}.mode .icon{display:block;font-size:30px;margin-bottom:6px}.mode strong{display:block;font-size:14px}.mode small{display:block;color:#c7dcff;font-size:11px;margin-top:4px}
-.wrap{max-width:1050px;padding:16px 18px 45px;margin:auto}.section-label{font-size:13px;color:#b8d9ff;margin:8px 2px 12px;font-weight:700}
-.promptbar{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:18px;padding:9px;border-radius:24px;background:#0b1d50;border:1px solid #8b58ff;box-shadow:0 0 20px #2c73ff44}
-textarea,select,input[type=file]{font:inherit;color:white;background:#071437;border:1px solid #356db7;border-radius:12px;padding:12px;width:100%}textarea{resize:vertical;min-height:105px;line-height:1.7}.promptbar textarea{border:0;background:transparent;min-height:56px;max-height:160px}.promptbar textarea:focus,textarea:focus,select:focus{outline:1px solid var(--cyan)}
-.primary{border:0;border-radius:22px;padding:0 25px;background:linear-gradient(120deg,#ffb900,#ffe05c);color:#201500;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 0 20px #ffbd2e88}.primary:disabled{opacity:.6;cursor:wait}
-.panel{margin-top:20px;padding:clamp(16px,3vw,24px);border:1px solid #2689ff88;border-radius:20px;background:#06143ee8;box-shadow:0 15px 55px #0006}.panel h2{margin:0 0 5px;color:#fff}.sub,.note{color:#b9cce9;font-size:13px;line-height:1.7}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;margin:13px 0 7px;color:#cfe7ff;font-size:13px}.filebox{padding:12px;border:1px dashed #399dff;border-radius:12px;background:#091b46}#imagePreview{display:none;max-width:100%;max-height:210px;margin:12px auto;border-radius:12px}
-#status{text-align:center;min-height:24px;color:#ffe16c;white-space:pre-wrap;font-size:13px}.result{display:none;border-top:1px solid #315d9b;margin-top:18px;padding-top:18px}.result img,.result video{width:100%;max-height:500px;object-fit:contain;background:#020817;border-radius:14px}.download{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:12px;background:#102c66;border:1px solid #429dff;color:white;text-decoration:none}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}.sample{border:1px solid #278bff;border-radius:16px;min-height:115px;display:grid;place-items:center;background:linear-gradient(135deg,#1c4b9a,#542f9b);font-size:36px;box-shadow:0 0 14px #087bff44}.sample:nth-child(2){background:linear-gradient(135deg,#71412c,#d7a55c)}.sample:nth-child(3){background:linear-gradient(135deg,#398d86,#e8b6c9)}.sample:nth-child(4){background:linear-gradient(135deg,#0d4b93,#2638a5)}
-footer{text-align:center;color:#d6e8ff;padding:25px;border-top:1px solid #1c5cb0;font-size:13px}
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:20px}.robot-wrap{min-height:175px;order:2}.robot{height:185px}.hero-copy{order:1}.modes{grid-template-columns:repeat(2,1fr)}.mode{min-height:108px}.gallery{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){header{height:70px}.badge{display:none}.logo{width:190px}.promptbar{grid-template-columns:1fr}.primary{min-height:52px}.row{grid-template-columns:1fr}.hero h1{font-size:34px}}
-</style></head>
+:root{--bg:#061426;--panel:#0c2038;--panel2:#102b49;--blue:#43b9ff;--cyan:#8be4ff;--text:#f3f8ff;--muted:#a9bfd4;--line:#21496b;--danger:#ff9a9a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at 50% -10%,#164d78 0%,#0a2948 34%,#061426 72%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(#58c9ff18 1px,transparent 1px),linear-gradient(90deg,#58c9ff18 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(16px,calc((100% - 1120px)/2));background:#061426e8;border-bottom:1px solid #2b6288;backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.brand img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 12px #39baff77)}
+.logo{font-size:20px;font-weight:900;letter-spacing:1.4px;color:#eaf8ff}.logo span{color:var(--blue)}
+.badge{font-size:10px;letter-spacing:1.2px;color:var(--cyan);border:1px solid #397da8;border-radius:30px;padding:7px 10px;white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:10px}
+.lang{border:1px solid #397da8;background:#0b2945;color:#dff6ff;border-radius:9px;padding:8px 12px;font-weight:700;cursor:pointer}
+.hero{position:relative;max-width:1120px;margin:0 auto;padding:48px 18px 26px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:20px}
+.hero-copy{text-align:left}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:12px 0;color:#f4fbff;text-shadow:0 0 28px #38b9ff33}
+.hero h1 span{color:var(--blue)}.hero p{max-width:580px;color:var(--muted);line-height:1.7;font-size:15px}
+.robot-stage{display:flex;justify-content:center;align-items:center;min-height:210px;position:relative}
+.robot-stage:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:#2ebcff18;filter:blur(24px)}
+.robot-stage img{position:relative;width:min(245px,75%);max-height:240px;object-fit:contain;filter:drop-shadow(0 12px 28px #28baff45);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.wrap{max-width:1000px;margin:0 auto;padding:8px 16px 48px;position:relative}
+.section-label{font-size:11px;letter-spacing:2px;color:#8cc9e9;text-transform:uppercase;margin:14px 0}
+.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mode{min-height:126px;padding:16px 10px;background:linear-gradient(145deg,#103253,#0a1d33);border:1px solid #24577c;border-radius:15px;color:white;text-align:center;cursor:pointer;transition:.2s}
+.mode:hover,.mode.active{border-color:#57caff;background:linear-gradient(145deg,#164a70,#0c2947);box-shadow:0 0 0 1px #43b9ff33,0 8px 30px #0003}
+.mode .icon{display:block;width:35px;height:35px;margin:0 auto 9px;color:var(--cyan)}
+.mode strong{display:block;color:#e9f8ff;font-size:13px}.mode small{display:block;color:#a9c2d7;margin-top:6px;font-size:11px;line-height:1.4}
+.panel{margin-top:18px;padding:clamp(17px,4vw,27px);background:linear-gradient(145deg,#0d2742ed,#091a2eed);border:1px solid #285779;border-radius:18px;box-shadow:0 18px 55px #0005}
+.panel h2{font-size:21px;color:#dff6ff;margin:0 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 18px}
+label{display:block;color:#c6eaff;font-size:13px;margin:16px 0 8px}
+textarea,select,input[type=file]{width:100%;border:1px solid #315b7c;background:#06172a;color:#f5fbff;border-radius:10px;padding:13px;font:inherit}
+textarea{min-height:125px;resize:vertical;line-height:1.55}textarea:focus,select:focus{outline:1px solid var(--blue);border-color:var(--blue)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.filebox{border:1px dashed #3c83ac;border-radius:12px;padding:13px;background:#081b2e}
+input[type=file]{padding:9px;font-size:12px}
+#imagePreview{display:none;max-width:100%;max-height:250px;border-radius:10px;margin:12px auto 0}
+.primary{width:100%;border:0;border-radius:11px;padding:16px;margin-top:20px;background:linear-gradient(90deg,#168bd0,#65d5ff);color:#04182a;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 7px 24px #168bd044}
+.primary:disabled{opacity:.55;cursor:wait}
+#status{min-height:22px;text-align:center;color:var(--cyan);font-size:13px;line-height:1.5;margin:15px 0 0;white-space:pre-wrap}
+.result{display:none;margin-top:20px;border-top:1px solid #285779;padding-top:18px}.result h3{color:var(--cyan);font-size:16px}
+.result img,.result video{display:block;width:100%;max-height:520px;object-fit:contain;background:#03101d;border-radius:12px}
+.download{display:block;text-align:center;text-decoration:none;background:#103454;border:1px solid #3b83ad;color:#e5f8ff;padding:12px;border-radius:9px;margin-top:12px;font-weight:bold}
+.note{font-size:11px;line-height:1.55;color:#8fa9bd;margin-top:13px}
+footer{text-align:center;color:#7894aa;font-size:12px;padding:25px 12px 35px;border-top:1px solid #1e4664}
+[dir="rtl"] body,[dir="rtl"]{font-family:Tahoma,Arial,sans-serif}
+[dir="rtl"] .hero-copy{text-align:right}
+[dir="rtl"] .section-label{text-align:right}
+[dir="rtl"] label{text-align:right}
+@media(max-width:700px){.hero{grid-template-columns:1fr;text-align:center;padding-top:35px}.hero-copy{text-align:center}.hero p{margin-left:auto;margin-right:auto}.robot-stage{min-height:145px}.robot-stage img{width:150px;max-height:155px}.modes{grid-template-columns:repeat(2,1fr)}.badge{display:none}}
+@media(max-width:430px){.logo{font-size:17px}.brand img{width:36px;height:36px}.row{grid-template-columns:1fr}.mode{min-height:112px}}
+</style>
+</head>
 <body>
-<header><img class="logo" src="/assets/logo.svg" alt="ALNAHARI AI"><div class="head-actions"><span class="badge" id="badge">CREATIVE STUDIO</span><button class="lang" id="langBtn" type="button">العربية</button></div></header>
+<header>
+  <a class="brand" href="#">
+    <img src="assets/logo.svg" alt="ALNAHARI AI logo">
+    <div class="logo">ALNAHARI <span>AI</span></div>
+  </a>
+  <div class="header-actions">
+    <div class="badge" data-i18n="badge">AI CREATIVE STUDIO</div>
+    <button class="lang" id="langToggle" type="button">العربية</button>
+  </div>
+</header>
+
 <section class="hero">
-<div class="robot-wrap"><img class="robot" id="robot" src="/assets/robot-mascot.jpg" alt="ALNAHARI AI robot mascot" onerror="this.style.display='none';document.getElementById('robotFallback').style.display='block'"><div id="robotFallback" class="robot-fallback" style="display:none">🤖</div></div>
-<div class="hero-copy"><h1>ALNAHARI <span>AI</span></h1><p id="tagline">Unleash your creativity with artificial intelligence</p>
-<div class="modes">
-<button class="mode active" data-mode="video"><span class="icon">🎬</span><strong data-i18n="textVideo">Text to Video</strong><small data-i18n="textVideoSub">Create video from a prompt</small></button>
-<button class="mode" data-mode="imagevideo"><span class="icon">🎞️</span><strong data-i18n="imageVideo">Image to Video</strong><small data-i18n="imageVideoSub">Animate your image</small></button>
-<button class="mode" data-mode="image"><span class="icon">🖼️</span><strong data-i18n="imageGen">AI Image Generator</strong><small data-i18n="imageGenSub">Create images with AI</small></button>
-<button class="mode" data-mode="edit"><span class="icon">🪄</span><strong data-i18n="imageEdit">AI Image Editor</strong><small data-i18n="coming">Coming soon</small></button>
-</div></div></section>
-<main class="wrap">
-<div class="section-label" id="choose">Choose your creative tool</div>
-<section class="panel">
-<h2 id="toolTitle">Text to Video Generator</h2><p class="sub" id="toolDesc">Describe your scene and sequence of events. Include dialogue and sound effects.</p>
-<label for="prompt" id="promptLabel">Describe what you want to create</label>
-<textarea id="prompt" maxlength="3000" placeholder="Describe your idea in Arabic or English..."></textarea>
-<div id="referenceBox" style="display:none"><label for="referenceImage" id="uploadLabel">Upload a reference image (JPG, PNG or WebP)</label><div class="filebox"><input id="referenceImage" type="file" accept="image/jpeg,image/png,image/webp"><img id="imagePreview" alt="Preview"></div></div>
-<div class="row"><div><label id="durationLabel" for="duration">Video duration</label><select id="duration"><option value="4">4 seconds</option><option value="6">6 seconds</option><option value="8">8 seconds</option></select></div><div><label id="qualityLabel" for="quality">Image quality</label><select id="quality"><option value="standard">Standard</option><option value="high">High</option><option value="ultra">Ultra</option></select></div></div>
-<button class="primary" id="generateButton" type="button" style="width:100%;min-height:54px;margin-top:18px">✨ Generate with ALNAHARI AI</button>
-<p id="status" role="status" aria-live="polite"></p>
-<div class="result" id="resultBox"><h3 id="resultTitle">Your creation</h3><div id="resultMedia"></div><a class="download" id="downloadLink" href="#" download>⬇ <span id="downloadText">Download your creation</span></a></div>
-<p class="note" id="note">Video generation, processing time and audio availability depend on the selected AI model and provider balance.</p>
+  <div class="hero-copy">
+    <div class="eyebrow" data-i18n="eyebrow">YOUR IDEAS. YOUR AI STUDIO.</div>
+    <h1><span data-i18n="heroLine1">Imagine.</span> <span data-i18n="heroLine2">Create.</span><br><span data-i18n="heroLine3">Inspire.</span></h1>
+    <p data-i18n="heroText">Create AI images and cinematic videos from your imagination. Bring your scenes, stories and ideas to life.</p>
+  </div>
+  <div class="robot-stage"><img src="assets/robot-mascot.svg" alt="ALNAHARI AI robot mascot"></div>
 </section>
-<div class="gallery" aria-label="Creative examples"><div class="sample">🌅</div><div class="sample">🐎</div><div class="sample">🐇</div><div class="sample">🏙️</div></div>
-</main><footer>ALNAHARI AI © 2026<br><br><span id="footerText">Powered by Imagination</span></footer>
+
+<main class="wrap">
+  <div class="section-label" data-i18n="choose">CHOOSE YOUR CREATIVE TOOL</div>
+  <div class="modes">
+    <button class="mode active" type="button" data-mode="video">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="13" height="14" rx="2"/><path d="m16 10 5-3v10l-5-3z"/></svg>
+      <strong data-i18n="textVideo">Text to Video</strong><small data-i18n="textVideoSmall">Create a video from a prompt</small>
+    </button>
+    <button class="mode" type="button" data-mode="imagevideo">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg>
+      <strong data-i18n="imageVideo">Image to Video</strong><small data-i18n="imageVideoSmall">Animate your own image</small>
+    </button>
+    <button class="mode" type="button" data-mode="image">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <strong data-i18n="imageGen">AI Image Generator</strong><small data-i18n="imageGenSmall">Create an image from text</small>
+    </button>
+    <button class="mode" type="button" data-mode="edit">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></svg>
+      <strong data-i18n="imageEdit">AI Image Editor</strong><small data-i18n="comingSoon">Coming soon</small>
+    </button>
+  </div>
+
+  <section class="panel">
+    <h2 id="toolTitle">Text to Video Generator</h2>
+    <p class="sub" id="toolDescription">Describe the scene and sequence of events. Include dialogue and sound effects.</p>
+    <label for="prompt" data-i18n="promptLabel">Your prompt</label>
+    <textarea id="prompt" maxlength="3000" placeholder="Example: A small brown rabbit runs through a green forest, stops beside a stream, then looks toward the camera. Add birdsong and gentle water sounds."></textarea>
+
+    <div id="referenceBox" style="display:none">
+      <label for="referenceImage" data-i18n="uploadLabel">Upload a reference image (JPG, PNG or WebP)</label>
+      <div class="filebox"><input id="referenceImage" type="file" accept="image/jpeg,image/png,image/webp"><img id="imagePreview" alt="Reference image preview"></div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="duration" data-i18n="durationLabel">Video duration</label>
+        <select id="duration"><option value="4">4 seconds</option><option value="6">6 seconds</option><option value="8">8 seconds</option></select>
+      </div>
+      <div>
+        <label for="quality" data-i18n="qualityLabel">Image quality</label>
+        <select id="quality"><option value="standard">Standard</option><option value="high">High</option><option value="ultra">Ultra</option></select>
+      </div>
+    </div>
+
+    <button class="primary" id="generateButton" type="button" data-i18n="generate">Generate with ALNAHARI AI</button>
+    <p id="status" role="status" aria-live="polite"></p>
+    <div class="result" id="resultBox"><h3 data-i18n="resultTitle">Your creation</h3><div id="resultMedia"></div><a class="download" id="downloadLink" href="#" download data-i18n="download">Download your creation</a></div>
+    <p class="note" data-i18n="note">Video generation depends on the connected AI model and available account balance. Dialogue and sound effects are requested where supported, but audio is not guaranteed by every model.</p>
+  </section>
+</main>
+<footer>ALNAHARI AI © 2026<br><br><span data-i18n="footer">Powered by Imagination</span></footer>
+
 <script>
-(()=>{
-const $=id=>document.getElementById(id);let mode="video",lang=localStorage.getItem("alnahari-language")||"en",objectUrl=null;
-const words={
-en:{badge:"CREATIVE STUDIO",lang:"العربية",tag:"Unleash your creativity with artificial intelligence",choose:"Choose your creative tool",textVideo:"Text to Video",textVideoSub:"Create video from a prompt",imageVideo:"Image to Video",imageVideoSub:"Animate your image",imageGen:"AI Image Generator",imageGenSub:"Create images with AI",imageEdit:"AI Image Editor",coming:"Coming soon",prompt:"Describe what you want to create",placeholder:"Describe your idea in Arabic or English...",duration:"Video duration",quality:"Image quality",upload:"Upload a reference image (JPG, PNG or WebP)",create:"✨ Generate with ALNAHARI AI",working:"Working... Please wait",result:"Your creation",download:"Download your creation",note:"Video generation, processing time and audio availability depend on the selected AI model and provider balance.",footer:"Powered by Imagination",titles:["Text to Video Generator","Image to Video Generator","AI Image Generator","AI Image Editor"],descs:["Describe your scene and sequence of events. Include dialogue and sound effects.","Upload a reference image, then describe how it should move.","Describe the image you want to create in detail.","This tool is being prepared and is not available yet."],statusPrompt:"Please enter your description first.",statusImage:"Creating your image. Please wait...",statusVideo:"Creating your video... This can take a few minutes.",successImage:"Your image has been created successfully!",successVideo:"Your video is ready!",failed:"Error: ",editUnavailable:"The AI Image Editor is not connected yet.",seconds:["4 seconds","6 seconds","8 seconds"],qualities:["Standard","High","Ultra"]},
-ar:{badge:"استوديو الإبداع",lang:"English",tag:"أطلق إبداعك بالذكاء الاصطناعي",choose:"اختر أداة الإبداع",textVideo:"تحويل النص إلى فيديو",textVideoSub:"أنشئ فيديو من وصفك",imageVideo:"تحويل الصورة إلى فيديو",imageVideoSub:"حرّك صورتك بالذكاء الاصطناعي",imageGen:"مولّد الصور بالذكاء الاصطناعي",imageGenSub:"أنشئ صوراً بالذكاء الاصطناعي",imageEdit:"محرر الصور بالذكاء الاصطناعي",coming:"قريباً",prompt:"صف ما تريد إنشاءه",placeholder:"اكتب فكرتك بالعربية أو الإنجليزية...",duration:"مدة الفيديو",quality:"جودة الصورة",upload:"ارفع صورة مرجعية (JPG أو PNG أو WebP)",create:"✨ أنشئ باستخدام ALNAHARI AI",working:"جارٍ التنفيذ... يرجى الانتظار",result:"إبداعك الجديد",download:"تنزيل إبداعك",note:"تعتمد مدة المعالجة وتوفر الصوت على نموذج الذكاء الاصطناعي ورصيد مزود الخدمة.",footer:"الإبداع بلا حدود",titles:["تحويل النص إلى فيديو","تحويل الصورة إلى فيديو","مولّد الصور بالذكاء الاصطناعي","محرر الصور بالذكاء الاصطناعي"],descs:["صف المشهد وتسلسل الأحداث، وأضف الحوار والمؤثرات الصوتية المطلوبة.","ارفع صورة مرجعية ثم صف الحركة التي تريدها.","صف الصورة التي تريد إنشاءها بالتفصيل.","هذه الأداة قيد التجهيز وغير متاحة حالياً."],statusPrompt:"يرجى كتابة وصف أولاً.",statusImage:"جارٍ إنشاء الصورة... يرجى الانتظار.",statusVideo:"جارٍ إنشاء الفيديو... قد يستغرق ذلك بضع دقائق.",successImage:"تم إنشاء الصورة بنجاح!",successVideo:"الفيديو جاهز!",failed:"خطأ: ",editUnavailable:"محرر الصور غير متصل بمحرك توليد حتى الآن.",seconds:["4 ثوانٍ","6 ثوانٍ","8 ثوانٍ"],qualities:["عادية","عالية","فائقة"]}};
-function t(){return words[lang]}
-function applyLang(){const x=t();document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";$("badge").textContent=x.badge;$("langBtn").textContent=x.lang;$("tagline").textContent=x.tag;$("choose").textContent=x.choose;$("promptLabel").textContent=x.prompt;$("prompt").placeholder=x.placeholder;$("durationLabel").textContent=x.duration;$("qualityLabel").textContent=x.quality;$("uploadLabel").textContent=x.upload;$("generateButton").textContent=mode==="edit"?x.imageEdit:x.create;$("resultTitle").textContent=x.result;$("downloadText").textContent=x.download;$("note").textContent=x.note;$("footerText").textContent=x.footer;document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=x[el.dataset.i18n]);[...$("duration").options].forEach((o,i)=>o.textContent=x.seconds[i]);[...$("quality").options].forEach((o,i)=>o.textContent=x.qualities[i]);$("toolTitle").textContent=x.titles[["video","imagevideo","image","edit"].indexOf(mode)];$("toolDesc").textContent=x.descs[["video","imagevideo","image","edit"].indexOf(mode)];}
-$("langBtn").onclick=()=>{lang=lang==="en"?"ar":"en";localStorage.setItem("alnahari-language",lang);applyLang()};
-document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll(".mode").forEach(q=>q.classList.toggle("active",q===b));$("referenceBox").style.display=mode==="imagevideo"?"block":"none";$("duration").disabled=mode==="image";$("quality").disabled=mode!=="image";$("generateButton").disabled=mode==="edit";$("status").textContent=mode==="edit"?t().editUnavailable:"";$("resultBox").style.display="none";applyLang()});
-$("referenceImage").onchange=()=>{const f=$("referenceImage").files[0],p=$("imagePreview");if(!f){p.style.display="none";return}if(!["image/jpeg","image/png","image/webp"].includes(f.type)){ $("referenceImage").value="";$("status").textContent=lang==="ar"?"اختر صورة JPG أو PNG أو WebP.":"Please choose a JPG, PNG or WebP image.";p.style.display="none";return}p.src=URL.createObjectURL(f);p.style.display="block"};
-function busy(v){$("generateButton").disabled=v||mode==="edit";$("generateButton").textContent=v?t().working:mode==="edit"?t().imageEdit:t().create}
-async function err(r){try{let d=await r.json();return d.details||d.error||"Request failed ("+r.status+")"}catch{return "Request failed ("+r.status+")"}}
-function show(blob,video){if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(blob);$("resultMedia").innerHTML="";let el=document.createElement(video?"video":"img");if(video){el.controls=true;el.playsInline=true;$("downloadLink").download="ALNAHARI-AI-video.mp4"}else{el.alt="Generated image";$("downloadLink").download="ALNAHARI-AI-image.png"}el.src=objectUrl;$("resultMedia").appendChild(el);$("downloadLink").href=objectUrl;$("resultBox").style.display="block"}
-async function compress(file){if(file.size>15*1024*1024)throw Error("Choose an image smaller than 15 MB.");const bmp=await createImageBitmap(file),scale=Math.min(1,1600/Math.max(bmp.width,bmp.height)),c=document.createElement("canvas");c.width=Math.round(bmp.width*scale);c.height=Math.round(bmp.height*scale);c.getContext("2d").drawImage(bmp,0,0,c.width,c.height);bmp.close();let blob=await new Promise(r=>c.toBlob(r,"image/jpeg",.78));if(!blob||blob.size>2.8*1024*1024)throw Error("Please choose a smaller image.");return await new Promise((r,j)=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.onerror=j;fr.readAsDataURL(blob)})}
-async function video(prompt){let body={prompt,mode,duration:Number($("duration").value)};if(mode==="imagevideo"){const file=$("referenceImage").files[0];if(!file)throw Error(lang==="ar"?"ارفع الصورة المرجعية أولاً.":"Please upload a reference image first.");body.imageData=await compress(file)}let r=await fetch("/api/video",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});if(r.status===202){const j=await r.json();if(!j.jobId)throw Error("Missing video job ID");return await poll(j.jobId)}if(!r.ok)throw Error(await err(r));if((r.headers.get("content-type")||"").startsWith("video/"))return await r.blob();let j=await r.json();if(j.videoUrl){let v=await fetch(j.videoUrl);if(!v.ok)throw Error("Could not retrieve video");return await v.blob()}throw Error("Unexpected video response")}
-async function poll(id){let start=Date.now();while(Date.now()-start<300000){$("status").textContent=t().statusVideo;await new Promise(r=>setTimeout(r,6000));let r=await fetch("/api/video?jobId="+encodeURIComponent(id),{cache:"no-store"});if(!r.ok)throw Error(await err(r));if((r.headers.get("content-type")||"").startsWith("video/"))return await r.blob();let j=await r.json();if(j.status==="failed")throw Error(j.error||"Video generation failed");if(j.status==="succeeded"&&j.videoUrl){let v=await fetch(j.videoUrl);if(!v.ok)throw Error("Could not download video");return await v.blob()}}throw Error("Video generation is taking longer than expected.")}
-$("generateButton").onclick=async()=>{const prompt=$("prompt").value.trim();if(!prompt){$("status").textContent=t().statusPrompt;return}if(mode==="edit")return;busy(true);$("resultBox").style.display="none";$("status").textContent="";try{if(mode==="image"){ $("status").textContent=t().statusImage;let r=await fetch("/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt})});if(!r.ok)throw Error(await err(r));let b=await r.blob();if(!b.type.startsWith("image/"))throw Error("Invalid image response");show(b,false);$("status").textContent=t().successImage}else{let b=await video(prompt);if(!b.type.startsWith("video/"))throw Error("Invalid video response");show(b,true);$("status").textContent=t().successVideo}}catch(e){$("status").textContent=t().failed+(e.message||"Something went wrong.")}finally{busy(false)}};
-applyLang();
+(() => {
+  let mode = "video";
+  let resultObjectUrl = null;
+  let lang = "en";
+  const $ = id => document.getElementById(id);
+
+  const words = {
+    en: {
+      badge:"AI CREATIVE STUDIO", eyebrow:"YOUR IDEAS. YOUR AI STUDIO.",
+      heroLine1:"Imagine.",heroLine2:"Create.",heroLine3:"Inspire.",
+      heroText:"Create AI images and cinematic videos from your imagination. Bring your scenes, stories and ideas to life.",
+      choose:"CHOOSE YOUR CREATIVE TOOL",textVideo:"Text to Video",textVideoSmall:"Create a video from a prompt",
+      imageVideo:"Image to Video",imageVideoSmall:"Animate your own image",imageGen:"AI Image Generator",
+      imageGenSmall:"Create an image from text",imageEdit:"AI Image Editor",comingSoon:"Coming soon",
+      promptLabel:"Your prompt",uploadLabel:"Upload a reference image (JPG, PNG or WebP)",
+      durationLabel:"Video duration",qualityLabel:"Image quality",generate:"Generate with ALNAHARI AI",
+      resultTitle:"Your creation",download:"Download your creation",footer:"Powered by Imagination",
+      titles:{video:"Text to Video Generator",imagevideo:"Image to Video Generator",image:"AI Image Generator",edit:"AI Image Editor"},
+      desc:{video:"Describe the scene and sequence of events. Include dialogue and sound effects.",imagevideo:"Upload a reference image, then describe exactly how it should move.",image:"Describe the image you want to create in as much detail as you like.",edit:"This tool is being prepared and is not available yet."},
+      empty:"Please enter your description first.",needImage:"Please upload a reference image first.",
+      preparing:"Preparing your reference image...",sending:"Sending your video request...",
+      creatingImage:"Creating your image. Please wait...",imageSuccess:"Your image has been created successfully!",
+      videoSuccess:"Your video is ready!",working:"Working... Please wait",editInfo:"AI Image Editor is not connected yet.",
+      invalidImage:"Please choose a JPG, PNG or WebP image.",largeImage:"Choose an image smaller than 15 MB.",
+      compressFail:"Could not process this image. Try another image.",tooLarge:"Image is still too large after compression.",
+      badImage:"The server did not return a valid image.",badVideo:"The service did not return a playable video file.",
+      waitVideo:"Creating your video... This can take a few minutes.",timeout:"Video generation is taking longer than expected. Please check again later.",
+      note:"Video generation depends on the connected AI model and available account balance. Dialogue and sound effects are requested where supported, but audio is not guaranteed by every model."
+    },
+    ar: {
+      badge:"استوديو الإبداع بالذكاء الاصطناعي",eyebrow:"أفكارك، واستوديو الذكاء الاصطناعي الخاص بك",
+      heroLine1:"تخيّل.",heroLine2:"ابتكر.",heroLine3:"أبدع.",
+      heroText:"أنشئ الصور ومقاطع الفيديو السينمائية بالذكاء الاصطناعي. حوّل مشاهدك وقصصك وأفكارك إلى إبداعات حية.",
+      choose:"اختر أداة الإبداع",textVideo:"تحويل النص إلى فيديو",textVideoSmall:"أنشئ فيديو من وصفك",
+      imageVideo:"تحويل الصورة إلى فيديو",imageVideoSmall:"حرّك صورتك الخاصة",imageGen:"مولّد الصور بالذكاء الاصطناعي",
+      imageGenSmall:"أنشئ صورة من النص",imageEdit:"محرّر الصور الذكي",comingSoon:"قريباً",
+      promptLabel:"اكتب وصفك",uploadLabel:"ارفع صورة مرجعية (JPG أو PNG أو WebP)",
+      durationLabel:"مدة الفيديو",qualityLabel:"جودة الصورة",generate:"أنشئ باستخدام ALNAHARI AI",
+      resultTitle:"إبداعك",download:"تحميل الإبداع",footer:"الإبداع بلا حدود",
+      titles:{video:"إنشاء فيديو من النص",imagevideo:"تحريك صورة إلى فيديو",image:"مولّد الصور بالذكاء الاصطناعي",edit:"محرّر الصور الذكي"},
+      desc:{video:"صف المشهد وتسلسل الأحداث، وأضف الحوار والمؤثرات الصوتية المطلوبة.",imagevideo:"ارفع صورة مرجعية ثم صف بدقة الحركة التي تريدها.",image:"صف الصورة التي تريد إنشاءها بأكبر قدر من التفاصيل.",edit:"هذه الأداة قيد التجهيز وغير متاحة حالياً."},
+      empty:"يرجى كتابة وصفك أولاً.",needImage:"يرجى رفع صورة مرجعية أولاً.",
+      preparing:"جارٍ تجهيز الصورة المرجعية...",sending:"جارٍ إرسال طلب إنشاء الفيديو...",
+      creatingImage:"جارٍ إنشاء الصورة، يرجى الانتظار...",imageSuccess:"تم إنشاء صورتك بنجاح!",
+      videoSuccess:"الفيديو جاهز!",working:"جارٍ التنفيذ... يرجى الانتظار",editInfo:"محرّر الصور الذكي لم يتم ربطه بعد.",
+      invalidImage:"اختر صورة بصيغة JPG أو PNG أو WebP.",largeImage:"اختر صورة حجمها أقل من 15 ميغابايت.",
+      compressFail:"تعذرت معالجة الصورة. جرّب صورة أخرى.",tooLarge:"حجم الصورة ما زال كبيراً بعد الضغط.",
+      badImage:"لم يُرجع الخادم صورة صالحة.",badVideo:"الخدمة لم تُرجع ملف فيديو قابلاً للتشغيل.",
+      waitVideo:"جارٍ إنشاء الفيديو... قد يستغرق ذلك بضع دقائق.",timeout:"استغرق إنشاء الفيديو وقتاً أطول من المتوقع. حاول التحقق لاحقاً.",
+      note:"يعتمد إنشاء الفيديو على نموذج الذكاء الاصطناعي المتصل والرصيد المتاح. نطلب الحوار والمؤثرات الصوتية عند دعم النموذج لها، لكن الصوت غير مضمون في جميع النماذج."
+    }
+  };
+
+  function tr(key){ return words[lang][key] || words.en[key] || key; }
+  function updateModeText(){
+    $("toolTitle").textContent = words[lang].titles[mode];
+    $("toolDescription").textContent = words[lang].desc[mode];
+  }
+  function setLanguage(next){
+    lang = next;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    $("langToggle").textContent = lang === "ar" ? "English" : "العربية";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.dataset.i18n;
+      if (words[lang][key] !== undefined) el.textContent = words[lang][key];
+    });
+    updateModeText();
+    $("prompt").placeholder = lang === "ar"
+      ? "مثال: أرنب بني صغير يركض في غابة خضراء، ثم يتوقف بجانب جدول ماء وينظر نحو الكاميرا. أضف أصوات العصافير وخرير الماء."
+      : "Example: A small brown rabbit runs through a green forest, stops beside a stream, then looks toward the camera. Add birdsong and gentle water sounds.";
+    $("status").textContent = "";
+  }
+  $("langToggle").addEventListener("click", () => setLanguage(lang === "en" ? "ar" : "en"));
+
+  document.querySelectorAll(".mode").forEach(button => {
+    button.addEventListener("click", () => {
+      mode = button.dataset.mode;
+      document.querySelectorAll(".mode").forEach(b => b.classList.toggle("active", b === button));
+      updateModeText();
+      $("referenceBox").style.display = mode === "imagevideo" ? "block" : "none";
+      $("duration").disabled = mode === "image";
+      $("quality").disabled = mode !== "image";
+      $("generateButton").disabled = mode === "edit";
+      $("generateButton").textContent = mode === "edit" ? tr("comingSoon") : tr("generate");
+      $("status").textContent = mode === "edit" ? tr("editInfo") : "";
+      $("resultBox").style.display = "none";
+    });
+  });
+
+  $("referenceImage").addEventListener("change", () => {
+    const file = $("referenceImage").files[0];
+    const preview = $("imagePreview");
+    if (!file) { preview.style.display = "none"; return; }
+    if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
+      $("referenceImage").value = "";
+      $("status").textContent = tr("invalidImage");
+      preview.style.display = "none";
+      return;
+    }
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+    $("status").textContent = "";
+  });
+
+  function setBusy(busy) {
+    $("generateButton").disabled = busy || mode === "edit";
+    $("generateButton").textContent = busy ? tr("working") : (mode === "edit" ? tr("comingSoon") : tr("generate"));
+  }
+  async function readError(response) {
+    try {
+      const data = await response.json();
+      return data.details || data.error || ("Request failed (" + response.status + ")");
+    } catch (_) { return "Request failed (" + response.status + "). Please try again."; }
+  }
+  function showResult(blob, kind) {
+    if (resultObjectUrl) URL.revokeObjectURL(resultObjectUrl);
+    resultObjectUrl = URL.createObjectURL(blob);
+    const holder = $("resultMedia");
+    holder.innerHTML = "";
+    let element;
+    if (kind === "video") {
+      element = document.createElement("video");
+      element.controls = true; element.playsInline = true; element.preload = "metadata";
+      element.src = resultObjectUrl;
+      $("downloadLink").download = "ALNAHARI-AI-video.mp4";
+    } else {
+      element = document.createElement("img");
+      element.alt = "Generated image"; element.src = resultObjectUrl;
+      $("downloadLink").download = "ALNAHARI-AI-image.png";
+    }
+    holder.appendChild(element);
+    $("downloadLink").href = resultObjectUrl;
+    $("resultBox").style.display = "block";
+  }
+  async function compressImage(file) {
+    if (file.size > 15 * 1024 * 1024) throw new Error(tr("largeImage"));
+    const source = await createImageBitmap(file);
+    const maxSide = 1600;
+    const scale = Math.min(1, maxSide / Math.max(source.width, source.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(source.width * scale));
+    canvas.height = Math.max(1, Math.round(source.height * scale));
+    canvas.getContext("2d").drawImage(source, 0, 0, canvas.width, canvas.height);
+    source.close();
+    let blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.82));
+    if (!blob) throw new Error(tr("compressFail"));
+    if (blob.size > 2.8 * 1024 * 1024) blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.55));
+    if (!blob || blob.size > 2.8 * 1024 * 1024) throw new Error(tr("tooLarge"));
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error(tr("compressFail")));
+      reader.readAsDataURL(blob);
+    });
+  }
+  async function createVideo(prompt) {
+    const payload = { prompt, mode, duration: Number($("duration").value) };
+    if (mode === "imagevideo") {
+      const file = $("referenceImage").files[0];
+      if (!file) throw new Error(tr("needImage"));
+      $("status").textContent = tr("preparing");
+      payload.imageData = await compressImage(file);
+    }
+    $("status").textContent = tr("sending");
+    const response = await fetch("/api/video", {
+      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
+    });
+    if (response.status === 202) {
+      const job = await response.json();
+      if (!job.jobId) throw new Error("The video service did not return a job ID.");
+      return await waitForVideo(job.jobId);
+    }
+    if (!response.ok) throw new Error(await readError(response));
+    const type = response.headers.get("content-type") || "";
+    if (type.startsWith("video/")) return await response.blob();
+    const data = await response.json();
+    if (data.videoUrl) {
+      const videoResponse = await fetch(data.videoUrl);
+      if (!videoResponse.ok) throw new Error("Could not retrieve the generated video.");
+      return await videoResponse.blob();
+    }
+    throw new Error("The video service returned an unexpected response.");
+  }
+  async function waitForVideo(jobId) {
+    const started = Date.now();
+    while (Date.now() - started < 5 * 60 * 1000) {
+      $("status").textContent = tr("waitVideo");
+      await new Promise(resolve => setTimeout(resolve, 6000));
+      const response = await fetch("/api/video?jobId=" + encodeURIComponent(jobId), {cache:"no-store"});
+      if (!response.ok) throw new Error(await readError(response));
+      const type = response.headers.get("content-type") || "";
+      if (type.startsWith("video/")) return await response.blob();
+      const data = await response.json();
+      if (data.status === "failed") throw new Error(data.error || "Video generation failed.");
+      if (data.status === "succeeded" && data.videoUrl) {
+        const videoResponse = await fetch(data.videoUrl);
+        if (!videoResponse.ok) throw new Error("Could not retrieve the generated video.");
+        return await videoResponse.blob();
+      }
+    }
+    throw new Error(tr("timeout"));
+  }
+
+  $("generateButton").addEventListener("click", async () => {
+    const prompt = $("prompt").value.trim();
+    if (!prompt) { $("status").textContent = tr("empty"); return; }
+    if (mode === "edit") return;
+    setBusy(true);
+    $("resultBox").style.display = "none";
+    $("status").textContent = "";
+    try {
+      if (mode === "image") {
+        $("status").textContent = tr("creatingImage");
+        const response = await fetch("/api/generate", {
+          method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt})
+        });
+        if (!response.ok) throw new Error(await readError(response));
+        const blob = await response.blob();
+        if (!(blob.type || "").startsWith("image/")) throw new Error(tr("badImage"));
+        showResult(blob,"image");
+        $("status").textContent = tr("imageSuccess");
+      } else {
+        const blob = await createVideo(prompt);
+        if (!(blob.type || "").startsWith("video/")) throw new Error(tr("badVideo"));
+        showResult(blob,"video");
+        $("status").textContent = tr("videoSuccess");
+      }
+    } catch (error) {
+      $("status").textContent = (lang === "ar" ? "خطأ: " : "Error: ") + (error.message || "Something went wrong.");
+    } finally { setBusy(false); }
+  });
+  setLanguage("en");
 })();
-</script></body></html>
+</script>
+</body>
+</html>
