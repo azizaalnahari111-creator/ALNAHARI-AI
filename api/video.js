@@ -104,7 +104,7 @@ Do not add unrelated sounds.
 
       videoURL.searchParams.set(
         "model",
-        "google/veo-3.1-fast"
+        "alibaba/wan-2.2-fast"
       );
 
       videoURL.searchParams.set(
